@@ -1,0 +1,4 @@
+DEBUG:root:setting the two x equations equal to each other: -x**3 + y 
+DEBUG:root:setting the two y equations equal to each other: -x + y
+DEBUG:root:put eq3 in terms of x: "x="{y**(1/3), -y**(1/3)/2 - sqrt(3)*I*y**(1/3)/2, -y**(1/3)/2 + sqrt(3)*I*y**(1/3)/2}
+DEBUG:root:substitue x into eq4: [-y**(1/3) + y, y**(1/3)/2 + sqrt(3)*I*y**(1/3)/2 + y, y**(1/3)/2 - sqrt(3)*I*y**(1/3)/2 + y]
