@@ -1,8 +1,0 @@
-DEBUG:root:setting the two x equations equal to each other: -sqrt(x) + y 
-DEBUG:root:setting the two y equations equal to each other: -x + 2*y
-DEBUG:root:put eq3 in terms of x(a): "x="[y**2]
-DEBUG:root:substitue x into eq4(b): -y**2 + 2*y
-DEBUG:root:solves eq4 for y(c): [0, 2]
-DEBUG:root:plug that solution back into eq 3(d): [0]
-DEBUG:root:plug that solution back into eq 3(d): [4]
-DEBUG:root:plug values back into the original parametric equations: {'equation1': [(0, 0), (2, 4)], 'equation2': [(0, 0), (2, 4), (0, 0), (2, 4)]}
