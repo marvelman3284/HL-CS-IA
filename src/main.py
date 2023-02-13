@@ -27,16 +27,16 @@ def main(parametric_eq1: Parametric, parametric_eq2: Parametric):
     )  # DOC: set the two 'y' eqatuions equal to each other and move everything to one side of the equation
     logging.debug(f"setting the two y equations equal to each other: {eq4}")
 
-    a = sp.solveset(eq3, x)  # DOC: solve eq3 for x
+    a = sp.solve(eq3, x)  # DOC: solve eq3 for x
     logging.debug(f'put eq3 in terms of x: "x="{a}')
 
-    b = [eq4.subs(x, i) for i in a]  # DOC: substitutes a[0] for y in eq4
+    b = eq4.subs(x, a[0])  # DOC: substitutes a[0] for y in eq4
     logging.debug(f"substitue x into eq4: {b}")
 
-    c = [sp.solveset(i, y)[0] for i in b]  # DOC: solves `b` for y
+    c = sp.solve(b, y)  # DOC: solves `b` for y
     logging.debug(f"solves eq4 for y: {c}")
 
-    d = [sp.solveset(eq3.subs(y, i), x)[0] for i in c]  # DOC: solves equation 3 with c[0]
+    d = sp.solve(eq3.subs(y, c[0]), x)  # DOC: solves equation 3 with c[0]
     logging.debug(f"plug that solution back into eq 3: {d}")
 
     for i in d:
@@ -64,6 +64,6 @@ if __name__ == "__main__":
 
     # NOTE: working: polynomial, radical, rational
     # FIX: not working: trig function,  exponential, rational to an exponent, abs?
-    para = Parametric("t**3", "t")
-    para1 = Parametric("t", "t")
+    para = Parametric("t**2", "t")
+    para1 = Parametric("t", "2*t")
     print((main(para, para1)))
