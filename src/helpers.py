@@ -40,6 +40,13 @@ class Point:
     def __eq__(self, o: object) -> bool:
         return self.x == o.x and self.y == o.y if isinstance(o, Point) else False
 
+    #  DOC: __key and __hash__ needed to be able to call `set()` on the Point class
+    def __key(self):
+        return (self.x, self.y)
+
+    def __hash__(self):
+        return hash(self.__key())
+
 
 class Parametric:
     def __init__(self, x_eq: str, y_eq: str):
