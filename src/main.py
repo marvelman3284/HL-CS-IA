@@ -41,9 +41,11 @@ def main(parametric_eq1: Parametric, parametric_eq2: Parametric):
             d = sp.solve(eq3.subs(y, j), x)  # DOC: solves `eq3` with `c[i]`
             logging.debug(f"plug that solution back into eq 3(d): {d}")
 
-            for i in d:
+            points = d + c
+
+            for k in points:
                 e = Point(
-                    parametric_eq1.x_eq.subs(x, i), parametric_eq1.y_eq.subs(x, i)
+                    parametric_eq1.x_eq.subs(x, k), parametric_eq1.y_eq.subs(x, k)
                 )
                 if "I" in str(e):
                     # NOTE: we don't really care about imaginary intersections, but log them just in case
@@ -52,10 +54,10 @@ def main(parametric_eq1: Parametric, parametric_eq2: Parametric):
                     # DOC: if it's real then append it to the list of intersections
                     dual_intersections["equation1"].append(e)
 
-            for i in c:
+            for k in points:
                 # DOC: repeat the same process as above, just with the second parametric equation
                 e = Point(
-                    parametric_eq2.x_eq.subs(y, i), parametric_eq2.y_eq.subs(y, i)
+                    parametric_eq2.x_eq.subs(y, k), parametric_eq2.y_eq.subs(y, k)
                 )
                 if "I" in str(e):
                     continue
@@ -76,6 +78,7 @@ def main(parametric_eq1: Parametric, parametric_eq2: Parametric):
 if __name__ == "__main__":
     # NOTE: working: polynomial, radical, rational
     # FIX: not working: trig function,  exponential, rational to an exponent, abs?
-    para = Parametric("t**(1/2)", "t")
-    para1 = Parametric("t", "2*t")
+    para = Parametric("t**2", "t/3")
+    para1 = Parametric("t+8", "t**(1/3)")
+    print(para, para1, sep="\n")
     print((main(para, para1)))
